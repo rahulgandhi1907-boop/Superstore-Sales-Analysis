@@ -57,6 +57,35 @@ The following analyses were performed using Oracle SQL:
 - Average Discount Analysis
 
 ---
+## 📝 Sample SQL Queries
+
+### 1. Total Sales
+
+```sql
+SELECT SUM(sales) AS total_sales
+FROM superstore;
+```
+
+### 2. Top 10 Products by Sales
+
+```sql
+SELECT product_name,
+       SUM(sales) AS total_sales
+FROM superstore
+GROUP BY product_name
+ORDER BY total_sales DESC
+FETCH FIRST 10 ROWS ONLY;
+```
+
+### 3. Monthly Sales Trend
+
+```sql
+SELECT TO_CHAR(order_date, 'Mon YYYY') AS month,
+       SUM(sales) AS total_sales
+FROM superstore
+GROUP BY TO_CHAR(order_date, 'Mon YYYY')
+ORDER BY MIN(order_date);
+```
 ## 📝 SQL Highlights
 
 Some key SQL operations performed in this project include:
@@ -101,7 +130,7 @@ The Power BI dashboard includes:
 
 ## 📁 Project Structure
 
-
+```
 Superstore-Sales-Analysis
 │
 ├── README.md
@@ -109,7 +138,7 @@ Superstore-Sales-Analysis
 ├── Superstore_Final.csv
 ├── final_projects1.sql
 └── superstore_sale_dashboard.pbix
-
+```
 
 ---
 
