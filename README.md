@@ -57,7 +57,7 @@ The following analyses were performed using Oracle SQL:
 - Average Discount Analysis
 
 ---
-## 📝 Sample SQL Queries
+## 📝 SQL Query Highlights
 
 ### 1. Total Sales
 
@@ -77,7 +77,28 @@ ORDER BY total_sales DESC
 FETCH FIRST 10 ROWS ONLY;
 ```
 
-### 3. Monthly Sales Trend
+### 3.Region-Wise Sales
+
+```sql
+SELECT
+    region,
+    SUM(sales) AS total_sales
+FROM supersale
+GROUP BY region
+ORDER BY total_sales DESC;
+```
+### 4.Category-Wise Profit
+
+```sql
+SELECT
+    category,
+    SUM(profit) AS total_profit
+FROM supersale
+GROUP BY category
+ORDER BY total_profit DESC;
+```
+
+### 5. Monthly Sales Trend
 
 ```sql
 SELECT TO_CHAR(order_date, 'Mon YYYY') AS month,
@@ -86,6 +107,7 @@ FROM superstore
 GROUP BY TO_CHAR(order_date, 'Mon YYYY')
 ORDER BY MIN(order_date);
 ```
+
 ## 📝 SQL Highlights
 
 Some key SQL operations performed in this project include:
